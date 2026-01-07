@@ -2,7 +2,7 @@ defmodule DynRelReproWeb.GraphqlSchema do
   use Absinthe.Schema
 
   use AshGraphql,
-    domains: []
+    domains: [Domain]
 
   import_types Absinthe.Plug.Types
 

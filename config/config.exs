@@ -51,7 +51,8 @@ config :spark,
 
 config :dyn_rel_repro,
   ecto_repos: [DynRelRepro.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ash_domains: [Domain]
 
 # Configure the endpoint
 config :dyn_rel_repro, DynRelReproWeb.Endpoint,
