@@ -14,6 +14,8 @@ defmodule DynRelRepro.Domain.Element do
 
   graphql do
     type :element
+
+    paginate_relationship_with groups: :relay
   end
 
   actions do
