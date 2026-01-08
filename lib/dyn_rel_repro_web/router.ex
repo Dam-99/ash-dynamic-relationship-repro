@@ -12,13 +12,13 @@ defmodule DynRelReproWeb.Router do
   scope "/gql" do
     pipe_through [:graphql]
 
-    forward "/playground", Absinthe.Plug.GraphiQL,
-      schema: Module.concat(["DynRelReproWeb.GraphqlSchema"]),
-      socket: Module.concat(["DynRelReproWeb.GraphqlSocket"]),
-      interface: :simple
-
-    forward "/", Absinthe.Plug, schema: Module.concat(["DynRelReproWeb.GraphqlSchema"])
+    forward "/", Absinthe.Plug, schema: DynRelReproWeb.GraphqlSchema
   end
+
+  forward "/graphiql", Absinthe.Plug.GraphiQL,
+    schema: DynRelReproWeb.GraphqlSchema,
+    socket: DynRelReproWeb.GraphqlSocket,
+    interface: :playground
 
   scope "/api", DynRelReproWeb do
     pipe_through :api
