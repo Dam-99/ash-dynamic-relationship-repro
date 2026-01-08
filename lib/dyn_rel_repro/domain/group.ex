@@ -5,6 +5,8 @@ defmodule DynRelRepro.Domain.Group do
     extensions: [AshGraphql.Resource],
     data_layer: AshPostgres.DataLayer
 
+  alias DynRelRepro.ManualRelationships.GroupToElement
+
   postgres do
     table "groups"
     repo DynRelRepro.Repo
@@ -30,6 +32,8 @@ defmodule DynRelRepro.Domain.Group do
   relationships do
     has_many :elements, DynRelRepro.Domain.Element do
       public? true
+      writable? false
+      manual GroupToElement
     end
   end
 end
